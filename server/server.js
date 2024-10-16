@@ -8,7 +8,13 @@ const myport = process.env.PORT || 8700
 require('./database/connection');
 
 
+apps.use(cors({
+  origin: '*',  
+  methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
+apps.options('*', cors());  
 
 apps.use(express.json());
 apps.use(cors());

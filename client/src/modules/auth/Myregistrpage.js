@@ -5,16 +5,16 @@ function Myregistrpage() {
     const navigat = useNavigate();
 
     const [user,setuser]=useState({
-        email:"",
-        fullname:"",
+        emailid:"",
+        name:"",
         course:"",
         dob:"",
-        phone:"",
+        phoneno:"",
         pass:""
     });
 
     const  updateuseer = (e)=>{
-        console.log(e.target.value);
+    
         const {name,value} = e.target;
         setuser((a)=>{
           return{
@@ -26,8 +26,8 @@ function Myregistrpage() {
 
 
     const mysubmitdata = async()=>{
-        const { email,fullname,phone,course,dob,pass} = user;
-        if(user.email==="" || user.fullname==="" || user.pass==="")
+        const { emailid,name,phoneno,course,dob,pass} = user;
+        if(user.emailid==="" || user.name==="" || user.pass==="")
         {
             alert("your form is invalid");
         }
@@ -37,7 +37,7 @@ function Myregistrpage() {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-                email,fullname,phone,course,dob,pass
+                emailid,name,phoneno,course,dob,pass
             })
             
         });
@@ -67,21 +67,21 @@ function Myregistrpage() {
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Email address</label>
-                            <input type="email" className="form-control" name='email' value={user.email} onInput={updateuseer}/>
+                            <input type="email" className="form-control" name='emailid' value={user.emailid} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">FullName</label>
-                            <input type="text" className="form-control" name='fullname' value={user.fullname} onInput={updateuseer}/>
+                            <input type="text" className="form-control" name='name' value={user.name} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Phone No</label>
-                            <input type="text" className="form-control" name='phone' value={user.phone} onInput={updateuseer}/>
+                            <input type="text" className="form-control" name='phoneno' value={user.phoneno} onInput={updateuseer}/>
                             
                         </div>
                     </div>

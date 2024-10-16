@@ -19,7 +19,7 @@ function CustomTable() {
 const deletedata = async(id)=>
 {
     await axios.delete(`http://localhost:8900/deleterecord/${id}`).then((d)=>{
-        console.log(d);
+        
         getalldata();
     })
 }
@@ -89,9 +89,9 @@ const deletedata = async(id)=>
                     return (
                         <tr>
                             <th scope="row">{d._id}</th>
-                            <td>{d.fullname}</td>
-                            <td>{d.email}</td>
-                            <td>{d.phone}</td>
+                            <td>{d.name}</td>
+                            <td>{d.emailid}</td>
+                            <td>{d.phoneno}</td>
                             <td>{d.dob}</td>
                             <td>{d.course}</td>
                             <td className='text-end'>

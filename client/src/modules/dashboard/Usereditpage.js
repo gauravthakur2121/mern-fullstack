@@ -6,11 +6,11 @@ function Usereditpage() {
     const mynavigt = useNavigate();
     const {id} = useParams();
     const [user,setuser]=useState({
-        email:"",
-        fullname:"",
+        emailid:"",
+        name:"",
         course:"",
         dob:"",
-        phone:"",
+        phoneno:"",
         pass:""
     });
 
@@ -36,22 +36,33 @@ useEffect(()=>{
 },[]);
 
 
-const changedetails = async()=>{
-    const { email,fullname,phone,course,dob,pass} = user;
-    const res = await fetch(`http://localhost:8900/updateuser/${id}`, {
+const changedetails = async () => {
+    const { emailid, name, phoneno, course, dob, pass } = user;
+    try {
+      const res = await fetch(`http://localhost:8900/updateuser/${id}`, {
         method: "PATCH",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json"
+        },
         body: JSON.stringify({
-            email,fullname,phone,course,dob,pass
+          emailid, name, phoneno, course, dob, pass
         })
-        
-    });
-    const data = await res.json();
-    console.log(data);
-    alert("update record");
-    mynavigt("/dashboard");
-    
-}
+      });
+  
+      if (!res.ok) {
+        throw new Error(`HTTP error! status: ${res.status}`);
+      }
+  
+      const data = await res.json();
+      console.log(data);
+      alert("Record updated successfully");
+      mynavigt("/dashboard");
+    } catch (error) {
+      console.error("Error during update:", error);
+      alert("Failed to update record. Please check the network or server logs.");
+    }
+  };
+  
 
 
 
@@ -70,21 +81,21 @@ const changedetails = async()=>{
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Email address</label>
-                            <input type="email" className="form-control" name='email' value={user.email} onInput={updateuseer}/>
+                            <input type="email" className="form-control" name='emailid' value={user.emailid} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">FullName</label>
-                            <input type="text" className="form-control" name='fullname' value={user.fullname} onInput={updateuseer}/>
+                            <input type="text" className="form-control" name='name' value={user.name} onInput={updateuseer}/>
                            
                         </div>
                     </div>
                     <div className='col-md-6'>
                         <div className="mb-3">
                             <label className="form-label">Phone No</label>
-                            <input type="text" className="form-control" name='phone' value={user.phone} onInput={updateuseer}/>
+                            <input type="text" className="form-control" name='phoneno' value={user.phoneno} onInput={updateuseer}/>
                             
                         </div>
                     </div>

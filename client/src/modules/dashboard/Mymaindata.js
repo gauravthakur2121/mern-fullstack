@@ -5,19 +5,19 @@ import Paper from '@mui/material/Paper';
 
 const columns = [
     { field: '_id', headerName: 'MongoId', width: 200 },
-    { field: 'fullname', headerName: 'Name', width: 200 },
+    { field: 'name', headerName: 'Name', width: 200 },
     {
       field: 'course',
       headerName: 'Course',
       width: 130,
     },
     {
-        field: 'phone',
+        field: 'phoneno',
         headerName: 'Phone No',
         width: 100,
       },
       {
-        field: 'email',
+        field: 'emailid',
         headerName: 'Email Id',
         width: 130,
       },

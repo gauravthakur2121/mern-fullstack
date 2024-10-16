@@ -19,14 +19,38 @@ apps.get("/alldata",async(req,res)=>{
 
 
 apps.post("/registoruser",async(req,res)=>{
-    const {email,fullname,phone,course,dob,pass} = req.body;
+    const {emailid,name,phoneno,course,dob,pass} = req.body;
     const adduser = new myschimatype({
-        email,fullname,phone,course,dob,pass
+        emailid,name,phoneno,course,dob,pass
     });
     await adduser.save();
     res.status(200).json(adduser);
-    console.log(adduser);
+   
 });
+
+apps.post("/login", async (req, res) => {
+    const { emailid, pass } = req.body;
+    if (emailid === "" || pass === "") {
+        res.status(412).json({ message: "error email and pass", status: 420 });
+    }
+    else {
+        const logindetails = await myschimatype.findOne({ emailid: emailid });
+        if (logindetails) {
+            if (logindetails.emailid === emailid && logindetails.pass === pass) {
+                res.status(200).json({ message: "welcome", status: 220 });
+            }
+            else {
+                res.status(300).json({ message: "email and password don't match", status: 421 });
+            }
+        }
+        else {
+            res.status(300).json({ message: "error", status: 620 });
+        }
+
+    }
+});
+
+
 
 
 apps.delete("/deleterecord/:id",async(req,res)=>{
@@ -43,12 +67,13 @@ apps.get("/singleuser/:id", async(req,res)=>{
 });
 
 
-apps.patch("/updateuser/:id", async(req,res)=>{
+
+  
+ apps.patch("/updateuser/:id", async(req,res)=>{
     const {id} = req.params;
     const recordupdate = await myschimatype.findByIdAndUpdate(id,req.body,{new:true});
-    console.log(recordupdate);
     res.status(201).json(recordupdate);
-});
+}); 
 
 
 
