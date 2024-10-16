@@ -19,7 +19,7 @@ function CustomTable() {
 
 const deletedata = async(id)=>
 {
-    await axios.delete(`${Myapi}/deleterecord`).then((d)=>{
+    await axios.delete(`${Myapi}/deleterecord/${id}`).then((d)=>{
         
         getalldata();
     })
