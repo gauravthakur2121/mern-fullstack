@@ -1,11 +1,12 @@
 import React,{useState,useEffect, Fragment} from 'react'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Myapi from './Myapi';
 
 function CustomTable() {
     const [user, setuser] = useState([])
     const getalldata = () => {
-        axios.get("http://localhost:8900/alldata").then((d) => {
+        axios.get(`${Myapi}/alldata`).then((d) => {
             console.log(d.data);
             setuser(d.data);
         });
@@ -18,7 +19,7 @@ function CustomTable() {
 
 const deletedata = async(id)=>
 {
-    await axios.delete(`http://localhost:8900/deleterecord/${id}`).then((d)=>{
+    await axios.delete(`${Myapi}/deleterecord`).then((d)=>{
         
         getalldata();
     })

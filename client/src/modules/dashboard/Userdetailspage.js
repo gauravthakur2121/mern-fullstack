@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import Myapi from './Myapi';
 
 
 function Userdetailspage() {
@@ -9,7 +10,7 @@ function Userdetailspage() {
     const [userdetail,userset]=useState({})
 
 const singleuser= ()=>{
-    axios.get(`http://localhost:8900/singleuser/${id}`).then((d)=>{
+    axios.get(`${Myapi}/singleuser/${id}`).then((d)=>{
         console.log(d);
         userset(d.data);
     })

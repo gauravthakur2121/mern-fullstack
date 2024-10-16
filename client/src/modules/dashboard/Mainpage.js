@@ -2,21 +2,16 @@ import React, { useEffect, useState } from 'react';
 import Mymaindata from './Mymaindata';
 import axios from 'axios';
 import CustomTable from './CustomTable';
+import Myapi from './Myapi';
 
 function Mainpage() {
     const [user, setuser] = useState([])
 
     const getalldata = () => {
-        axios.get("http://localhost:8900/alldata").then((d) => {
-            console.log(d.data);
+        axios.get(`${Myapi}/alldata`).then((d) => {
             setuser(d.data);
         });
-        // fetch("http://localhost:8900/alldata").then((d)=>{
-        //     return d.json()
-        // }).then((dts)=>{
-        //     console.log(dts);
-        // })
-    }
+        }
 
     useEffect(() => {
         getalldata();

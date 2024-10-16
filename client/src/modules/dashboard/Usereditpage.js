@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import Myapi from './Myapi';
 
 function Usereditpage() {
     const mynavigt = useNavigate();
@@ -26,7 +27,7 @@ function Usereditpage() {
     }
 
     const edituser = ()=>{
-        axios.get(`http://localhost:8900/singleuser/${id}`).then((d)=>{
+        axios.get(`${Myapi}/singleuser/${id}`).then((d)=>{
             console.log(d);
            setuser(d.data);
          });
@@ -39,7 +40,7 @@ useEffect(()=>{
 const changedetails = async () => {
     const { emailid, name, phoneno, course, dob, pass } = user;
     try {
-      const res = await fetch(`http://localhost:8900/updateuser/${id}`, {
+      const res = await fetch(`${Myapi}/updateuser/${id}`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json"
