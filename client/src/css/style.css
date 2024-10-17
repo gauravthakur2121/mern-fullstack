@@ -15,9 +15,10 @@
 }
 .c-btn
 {
-    background: linear-gradient(45deg, #2bd231, #001f03);
+    background-color: blue;
+    color: white;
     border: none;
-    padding: 8px 50px;
+    padding: 8px 30px;
 }
 
   
@@ -102,3 +103,47 @@
     min-height: 100px;
     max-height: fit-content !important;
   }
+
+  .tblock
+  {
+    display:block;
+  }
+  .cpa
+  {
+    width: 85%;
+    display: inline-block;
+  }
+  .showhide
+  {
+    display: inline-block;
+    width: 42px;
+
+  }
+  .h2{
+    font-size: 18px;
+    font-weight: 600;
+    color: blue;
+  }
+
+
+  
+
+  @media(max-width:500px){
+    .dash-1{
+      display: none;
+    }
+    .c-res{
+      align-items: center;
+      text-align: center;
+    }
+    .c-res1{
+      align-items: center;
+      text-align: center;
+    }
+    .h2{
+      font-size: 16px;
+      font-weight: 700;
+      color: blue;
+    }
+  }
+

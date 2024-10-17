@@ -11,6 +11,7 @@ import Myerrorpage from './modules/shares/Myerrorpage';
 import Mainpage from './modules/dashboard/Mainpage';
 import Userdetailspage from './modules/dashboard/Userdetailspage';
 import Usereditpage from './modules/dashboard/Usereditpage';
+import 'react-toastify/dist/ReactToastify.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
