@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Myapi from '../dashboard/Myapi';
 
 function Myregistrpage() {
     const navigat = useNavigate();
@@ -33,7 +34,7 @@ function Myregistrpage() {
         }
         else
         {
-        const res = await fetch("http://localhost:8900/registoruser", {
+        const res = await fetch(`${Myapi}/registoruser`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

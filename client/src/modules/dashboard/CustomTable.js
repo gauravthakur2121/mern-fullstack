@@ -7,7 +7,7 @@ function CustomTable() {
     const [user, setuser] = useState([])
     const getalldata = () => {
         axios.get(`${Myapi}/alldata`).then((d) => {
-            console.log(d.data);
+            
             setuser(d.data);
         });
     }

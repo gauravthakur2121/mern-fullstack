@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom';
+import Myapi from '../dashboard/Myapi';
 
 function Myloginpage() {
     const navigat = useNavigate()
@@ -26,7 +27,7 @@ function Myloginpage() {
             alert("fill the emailid and password")
         }
         else{
-            const datares = await fetch("http://localhost:8900/login" , {
+            const datares = await fetch(`${Myapi}/login` , {
                 method:"POST",
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({
