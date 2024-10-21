@@ -11,7 +11,6 @@ function Userdetailspage() {
 
 const singleuser= ()=>{
     axios.get(`${Myapi}/singleuser/${id}`).then((d)=>{
-        console.log(d);
         userset(d.data);
     })
 

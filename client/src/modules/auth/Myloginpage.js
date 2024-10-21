@@ -7,9 +7,11 @@ import { MdWifiPassword } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
+import { useUser } from '../shares/UserContext';
 
 function Myloginpage() {
-    const navigat = useNavigate()
+    const navigat = useNavigate();
+    const { setloginuser } = useUser(); 
     const [login,setLogin]=useState({
         emailid:"",
         pass:""
@@ -50,11 +52,13 @@ function Myloginpage() {
                 })
             });
             const resdata =  await datares.json()
-        console.log(resdata)
         
         if(resdata.status===220)
             {
                 toast.success("Login succesfully ",{theme: "dark"});
+                if (resdata.user) {
+                    setloginuser({ name: resdata.user.name }); 
+                }
                 setTimeout(() => {
                     navigat('/dashboard');
                      }, 2000);

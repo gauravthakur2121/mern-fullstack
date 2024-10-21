@@ -7,10 +7,10 @@ function Mylandingpge() {
   return (
     <div className='container-fluid'>
     <div className='row'>
-      <div className='col-md-2 g-0'>
+      <div className='col-md-2 g-0 sidebar-container'>
         <Mysidebar/>
       </div>
-      <div className='col-md-10 g-0'>
+      <div className='col-md-10 g-0 main-content'>
         <Myheaderpage/>
         <div className='page'>
           <Outlet></Outlet>

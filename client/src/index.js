@@ -12,26 +12,25 @@ import Mainpage from './modules/dashboard/Mainpage';
 import Userdetailspage from './modules/dashboard/Userdetailspage';
 import Usereditpage from './modules/dashboard/Usereditpage';
 import 'react-toastify/dist/ReactToastify.css';
+import { UserProvider } from './modules/shares/UserContext';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
+  <UserProvider> 
     <BrowserRouter>
       <Routes>
-          <Route path='' element={<Myloginpage/>}></Route>
-          <Route path='registor' element={<Myregistrpage/>}></Route>
-          <Route path='dashboard' element={<Mylandingpge/>}>
-                <Route path='' element={<Mainpage/>}></Route>
-                <Route path='details/:id' element={<Userdetailspage/>}></Route>
-                <Route path='edituser/:id' element={<Usereditpage/>}></Route>
-          
-          </Route>
-          <Route path='*' element={<Myerrorpage/>}/>
-
+        <Route path='' element={<Myloginpage />} />
+        <Route path='registor' element={<Myregistrpage />} />
+        <Route path='dashboard' element={<Mylandingpge />}>
+          <Route path='' element={<Mainpage />} />
+          <Route path='details/:id' element={<Userdetailspage />} />
+          <Route path='edituser/:id' element={<Usereditpage />} />
+        </Route>
+        <Route path='*' element={<Myerrorpage />} />
       </Routes>
     </BrowserRouter>
-
-
-  </React.StrictMode>
-);
+  </UserProvider>
+</React.StrictMode>
+); 

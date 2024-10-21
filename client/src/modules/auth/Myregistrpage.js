@@ -7,12 +7,14 @@ import { MdWifiPassword } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { IoPerson } from "react-icons/io5";
+import { useUser } from '../shares/UserContext';
 import { FaPhoneAlt } from "react-icons/fa";
 import { CgCalendarDates } from "react-icons/cg";
 import { SiCoursera } from "react-icons/si";
 import { ToastContainer, toast } from 'react-toastify';
 
 function Myregistrpage() {
+    const { setUser } = useUser();
     const navigat = useNavigate();
     const [showpass , setShowPass] = useState("password")
 
@@ -66,6 +68,7 @@ function Myregistrpage() {
             
         });
         const data = await res.json();
+        setUser({name});
         toast.success("Register Succesfully" , {theme:"dark"})
         setTimeout(() => {
             navigat("/");
@@ -107,7 +110,7 @@ function Myregistrpage() {
                             <input type="text" className="form-control" name='name' value={user.name} onInput={updateuseer}
                             {...register("name" , {required:"Fullname is required"})}
                             />
-                            {errors.fullname && <span className='text-danger'>{errors.fullname.message}</span>}
+                            {errors.name && <span className='text-danger'>{errors.name.message}</span>}
                            
                         </div>
                     </div>

@@ -1,5 +1,5 @@
-import React from 'react'
 
- // const Myapi = "http://localhost:8900";
-    const Myapi = "https://ranagaurav.onrender.com"
+
+  // const Myapi = "http://localhost:8900";
+   const Myapi = "https://ranagaurav.onrender.com"
 export default Myapi;

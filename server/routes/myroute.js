@@ -29,7 +29,7 @@ apps.post("/registoruser",async(req,res)=>{
 });
 
 apps.post("/login", async (req, res) => {
-    const { emailid, pass } = req.body;
+    const { emailid, pass} = req.body;
     if (emailid === "" || pass === "") {
         res.status(412).json({ message: "error email and pass", status: 420 });
     }
@@ -37,18 +37,23 @@ apps.post("/login", async (req, res) => {
         const logindetails = await myschimatype.findOne({ emailid: emailid });
         if (logindetails) {
             if (logindetails.emailid === emailid && logindetails.pass === pass) {
-                res.status(200).json({ message: "welcome", status: 220 });
-            }
-            else {
+                res.status(200).json({
+                    message: "welcome",
+                    status: 220,
+                    user: {
+                        name: logindetails.name, 
+                        emailid: logindetails.emailid 
+                    }
+                });
+            } else {
                 res.status(300).json({ message: "email and password don't match", status: 421 });
             }
-        }
-        else {
+        } else {
             res.status(300).json({ message: "error", status: 620 });
         }
-
     }
 });
+  
 
 
 
