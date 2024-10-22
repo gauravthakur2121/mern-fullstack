@@ -7,11 +7,13 @@ import { MdWifiPassword } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
-import { useUser } from '../shares/UserContext';
+import Myheaderpage from '../shares/Myheaderpage';
+import Footer from '../dashboard/Footer';
+import { useUser } from '../shares/UserProvider';
 
 function Myloginpage() {
     const navigat = useNavigate();
-    const { setloginuser } = useUser(); 
+     const { setloginuser } = useUser(); 
     const [login,setLogin]=useState({
         emailid:"",
         pass:""
@@ -57,8 +59,8 @@ function Myloginpage() {
             {
                 toast.success("Login succesfully ",{theme: "dark"});
                 if (resdata.user) {
-                    setloginuser({ name: resdata.user.name }); 
-                }
+                  setloginuser({ name: resdata.user.name }); 
+                 }
                 setTimeout(() => {
                     navigat('/dashboard');
                      }, 2000);
@@ -79,15 +81,17 @@ function Myloginpage() {
 }
 
   return (
-    <div className='container mt-5 c-res1'>
+    <>
+    <Myheaderpage/>
+    <div className='container-fluid c-res1 register-page'>
         <ToastContainer/>
     <div className='row justify-content-center'>
         <div className='col-md-5  p-3 rounded shadow'>
-            <div className='container-fluid c-res'>
+            <div className='container-fluid c-res con-res'>
                 <div className='row'>
                 <div className='col-12 text-center'>
                         <div class="mb-3">
-                          <p className='h2'>Welcome to Login page</p>
+                          <p className='h2 animated-title'>Welcome to Login page</p>
                         </div>
                     </div>
                     <div className='col-12'>
@@ -105,9 +109,10 @@ function Myloginpage() {
                     </div>
                     <div className='col-12 text-center'>
                         <div class="mb-3">
-                           <button className='btn btn-success c-btn' type='button' onClick={userlogin}>login</button>
-                           <Link to="registor" className="btn btn-success c-btn ms-3 ">Registor Now</Link>
-                           <Link to="dashboard" className="btn btn-success dash-1 c-btn ms-3 ">dashboard</Link>
+                           <button className='button' type='button' onClick={userlogin}>login</button>
+                           <button type="button" className="button ms-2">
+  <Link to="/registor" className="text-white text-decoration-none">Register Now</Link>
+                    </button>
                         </div>
                     </div>
                 </div>
@@ -116,6 +121,8 @@ function Myloginpage() {
         </div>
     </div>
 </div>
+<Footer/>
+</>
   )
 }
 

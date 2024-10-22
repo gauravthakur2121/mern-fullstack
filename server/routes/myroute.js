@@ -19,9 +19,9 @@ apps.get("/alldata",async(req,res)=>{
 
 
 apps.post("/registoruser",async(req,res)=>{
-    const {emailid,name,phoneno,course,dob,pass} = req.body;
+    const {emailid,name,phoneno,course,dob,pass,gender} = req.body;
     const adduser = new myschimatype({
-        emailid,name,phoneno,course,dob,pass
+        emailid,name,phoneno,course,dob,pass,gender
     });
     await adduser.save();
     res.status(200).json(adduser);

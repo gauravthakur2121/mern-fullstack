@@ -8,11 +8,12 @@ import Myloginpage from './modules/auth/Myloginpage';
 import Myregistrpage from './modules/auth/Myregistrpage';
 import Mylandingpge from './modules/dashboard/Mylandingpge';
 import Myerrorpage from './modules/shares/Myerrorpage';
-import Mainpage from './modules/dashboard/Mainpage';
 import Userdetailspage from './modules/dashboard/Userdetailspage';
 import Usereditpage from './modules/dashboard/Usereditpage';
 import 'react-toastify/dist/ReactToastify.css';
-import { UserProvider } from './modules/shares/UserContext';
+import { UserProvider } from './modules/shares/UserProvider';
+import CustomTable from './modules/dashboard/CustomTable';
+import Codesqude from './modules/dashboard/Coaching';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -22,12 +23,14 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='' element={<Myloginpage />} />
-        <Route path='registor' element={<Myregistrpage />} />
+        <Route path='userdata' element={<CustomTable/>} />
+        <Route path='registor' element={<Myregistrpage />} /> 
+        <Route path='details/:id' element={<Userdetailspage />} />
+        <Route path='edituser/:id' element={<Usereditpage />} />
         <Route path='dashboard' element={<Mylandingpge />}>
-          <Route path='' element={<Mainpage />} />
-          <Route path='details/:id' element={<Userdetailspage />} />
-          <Route path='edituser/:id' element={<Usereditpage />} />
+          <Route path='' element={<Codesqude />} /> 
         </Route>
+        
         <Route path='*' element={<Myerrorpage />} />
       </Routes>
     </BrowserRouter>

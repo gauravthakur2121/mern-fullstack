@@ -6,10 +6,12 @@ import Carddata from './Carddata';
 import Contact from './Contact';
 import Success from './Success';
 import Footer from './Footer';
+import Userlogindata from '../shares/Userlogindata';
 
 const Codesqude = () => {
   return (
     <div>
+      <Userlogindata/>
          <Header />
       <ImageList />
       <Workscompany />

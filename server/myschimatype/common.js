@@ -7,6 +7,9 @@ emailid:{
 name:{
     type:String
 },
+gender:{
+    type:String
+},
 phoneno:{
     type:String
 },

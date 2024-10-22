@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FaHome, FaChartLine, FaBox, FaCog, FaSignOutAlt, FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 function Mysidebar() {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
@@ -15,7 +16,7 @@ function Mysidebar() {
         <FaBars />
       </div>
 
-      {/* Sidebar */}
+    
       <div className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
         <ul>
           <li>
@@ -28,7 +29,7 @@ function Mysidebar() {
           </li>
           <li>
             <FaBox />
-            <span className="menu-text">Orders</span>
+           <Link to="/userdata"><span className="menu-text">Data</span></Link>
           </li>
           <li>
             <FaCog />
