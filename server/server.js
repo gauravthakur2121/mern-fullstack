@@ -9,12 +9,17 @@ require('./database/connection');
 
 
 apps.use(cors({
-  origin: '*',  
+  origin: 'http://localhost:3002' ,  
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-apps.options('*', cors());  
+apps.options('http://localhost:3002', cors());  
+
+apps.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
 
 apps.use(express.json());
 apps.use(myroute);
