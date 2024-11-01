@@ -17,7 +17,6 @@ apps.use(cors({
 apps.options('*', cors());  
 
 apps.use(express.json());
-apps.use(cors());
 apps.use(myroute);
 
 
