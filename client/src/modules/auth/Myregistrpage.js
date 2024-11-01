@@ -37,6 +37,7 @@ function Myregistrpage() {
     dob: "",
     phoneno: "",
     pass: "",
+    role: "",
     confirmPassword: ""
   });
 
@@ -65,15 +66,13 @@ function Myregistrpage() {
   };
 
   const mysubmitdata = async () => {
-    const { emailid, name, phoneno, course, dob, pass, gender } = user;
-    if (
-      user.emailid === "" ||
-      user.name === "" ||
-      user.pass === "" ||
-      user.gender === ""
-    ) {
-      alert("your form is invalid");
-    } else {
+    console.log(user)
+    const { emailid, name, phoneno, course, dob, pass, gender,role } = user;
+    if (!emailid || !name || !pass || !gender || !role) {
+      toast.error("Your form is incomplete. Please fill in all required fields.", { theme: "dark" });
+      return; 
+    } 
+    else {
       const res = await fetch(`${Myapi}/registoruser`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -84,10 +83,12 @@ function Myregistrpage() {
           course,
           dob,
           pass,
+          role,
           gender,
         }),
       });
-      const data = await res.json();
+        const data = await res.json();
+        console.log(data)
      // setUser({ name });
       toast.success("Register Succesfully", { theme: "dark" });
       setTimeout(() => {
@@ -113,6 +114,27 @@ function Myregistrpage() {
                     <p className="h2 animated-title">Welcome to Registor Page</p>
                   </div>
                 </div>
+
+                <div className="col-md-12">
+  <div className="mb-3">
+    <label className="form-label">Select Role</label>
+    <select
+      className="form-select"
+      {...register("role", { required: "Role is required" })}
+      onChange={(e) => {
+        updateuseer(e); 
+      }}
+    >
+      <option value="">Select Role</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    {errors.role && (
+      <span className="text-danger">{errors.role.message}</span>
+    )}
+  </div>
+</div>
+
                 <div className="col-md-6">
                   <div className="mb-3">
                     <label className="form-label">
@@ -248,7 +270,15 @@ function Myregistrpage() {
                     >
                       <option>mern</option>
                       <option>mean</option>
-                      <option>java</option>
+                      <option>Data Science</option>
+                      <option>Artificial Intelligence</option>
+                      <option>Python</option>
+                      <option>Testing</option>
+                      <option>Digital Marketing</option>
+                      <option>Ios</option>
+                      <option>Android</option>
+                      <option>JAVA</option>
+                      <option>Data Analytics</option>
                     </select>
                   </div>
                 </div>

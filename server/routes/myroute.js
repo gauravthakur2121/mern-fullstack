@@ -19,9 +19,11 @@ apps.get("/alldata",async(req,res)=>{
 
 
 apps.post("/registoruser",async(req,res)=>{
-    const {emailid,name,phoneno,course,dob,pass,gender} = req.body;
+    const {emailid,name,phoneno,course,dob,pass,gender,role} = req.body;
+    console.log("Role received:", role); 
+   
     const adduser = new myschimatype({
-        emailid,name,phoneno,course,dob,pass,gender
+        emailid,name,phoneno,course,dob,pass,gender,role
     });
     await adduser.save();
     res.status(200).json(adduser);
@@ -43,7 +45,8 @@ apps.post("/login", async (req, res) => {
                     user: {
                         name: logindetails.name, 
                         emailid: logindetails.emailid 
-                    }
+                    },
+                    role: user.role,
                 });
             } else {
                 res.status(300).json({ message: "email and password don't match", status: 421 });

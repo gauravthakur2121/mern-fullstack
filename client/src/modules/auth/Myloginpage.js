@@ -9,11 +9,15 @@ import { FaEyeSlash } from "react-icons/fa";
 import { ToastContainer, toast } from 'react-toastify';
 import Myheaderpage from '../shares/Myheaderpage';
 import Footer from '../dashboard/Footer';
-import { useUser } from '../shares/UserProvider';
+  // import { useSelector, useDispatch } from 'react-redux';
+ // import { usershow } from '../Redux/Userslice';
+  import { useUser } from '../shares/UserProvider';
 
 function Myloginpage() {
     const navigat = useNavigate();
-     const { setloginuser } = useUser(); 
+      // const username = useSelector((state) => state.usersdata.username)
+     //const dispatch = useDispatch()
+      const { setloginuser } = useUser(); 
     const [login,setLogin]=useState({
         emailid:"",
         pass:""
@@ -40,45 +44,39 @@ function Myloginpage() {
         })
     }
 
-    const userlogin = async()=>{
-        const {emailid , pass} = login
-        if(login.emailid==="" || login.pass===""){
-            alert("fill the emailid and password")
-        }
-        else{
-            const datares = await fetch(`${Myapi}/login` , {
-                method:"POST",
-                headers: {"Content-Type": "application/json"},
-                body: JSON.stringify({
-                    emailid , pass
-                })
+    const userlogin = async () => {
+        const { emailid, pass } = login;
+        if (login.emailid === "" || login.pass === "") {
+            alert("Please fill in both email and password.");
+        } else {
+            const datares = await fetch(`${Myapi}/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ emailid, pass })
             });
-            const resdata =  await datares.json()
-        
-        if(resdata.status===220)
-            {
-                toast.success("Login succesfully ",{theme: "dark"});
+            const resdata = await datares.json();
+    
+            if (resdata.status === 220) {
+                toast.success("Login successfully", { theme: "dark" });
                 if (resdata.user) {
-                  setloginuser({ name: resdata.user.name }); 
-                 }
-                setTimeout(() => {
-                    navigat('/dashboard');
-                     }, 2000);
-                
-            }
-
-            if(resdata.status===620)
-            {
-                alert("user not found");
-            }
-
-            if(resdata.status===421)
-                {
-                    alert("email and password don't match");
+                    setloginuser({ name: resdata.user.name });
+            
+                    setTimeout(() => {
+                        if (resdata.user.role === "admin") {
+                            navigat('/userdata'); // Navigate to admin dashboard
+                        } else {
+                            navigat('/dashboard'); // Navigate to user dashboard
+                        }
+                    }, 2000);
                 }
+            } else if (resdata.status === 620) {
+                alert("User not found."); 
+            } else if (resdata.status === 421) {
+                alert("Email and password don't match.");
+            }
         }
-
-}
+    };
+    
 
   return (
     <>

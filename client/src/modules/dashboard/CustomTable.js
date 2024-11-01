@@ -5,6 +5,7 @@ import Myapi from './Myapi';
 import { FaRegEdit } from "react-icons/fa";
 import { FiEye } from "react-icons/fi";
 import { MdDelete } from "react-icons/md";
+import Userlogindata from '../shares/Userlogindata';
 
 function CustomTable() {
     const [user, setuser] = useState([]);
@@ -20,13 +21,17 @@ function CustomTable() {
     }, []);
 
     const deletedata = async (id) => {
+        const confirmdelete =  window.confirm("Are you sure you want to delete this user data")
+        if(confirmdelete){
         await axios.delete(`${Myapi}/deleterecord/${id}`).then(() => {
             getalldata();
         });
-    };
+    }
+};
 
     return (
         <Fragment>
+            <Userlogindata/>
             <div className="table-responsive">
                 <table className="table table-bordered border-primary">
                     <thead>
