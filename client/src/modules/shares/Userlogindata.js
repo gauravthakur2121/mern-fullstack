@@ -16,7 +16,7 @@ const { loginuser } = useUser();
                         </h1>
             
                     ) : (
-                        <h1 className='welcome-message animated'>Please log in.</h1>
+                        <h1 className='welcome-message animated'>Please log in..</h1>
                     )}
                 </div>
             </div>

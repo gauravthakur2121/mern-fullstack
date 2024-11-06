@@ -43,10 +43,10 @@ apps.post("/login", async (req, res) => {
                     message: "welcome",
                     status: 220,
                     user: {
-                        name: logindetails.name, 
-                        emailid: logindetails.emailid 
-                    },
-                    role: user.role,
+                        name: logindetails.name,
+                        emailid: logindetails.emailid,
+                        role: logindetails.role
+                    }
                 });
             } else {
                 res.status(300).json({ message: "email and password don't match", status: 421 });

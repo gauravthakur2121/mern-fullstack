@@ -62,11 +62,7 @@ function Myloginpage() {
                     setloginuser({ name: resdata.user.name });
             
                     setTimeout(() => {
-                        if (resdata.user.role === "admin") {
-                            navigat('/userdata'); // Navigate to admin dashboard
-                        } else {
-                            navigat('/dashboard'); // Navigate to user dashboard
-                        }
+                        navigat(resdata.user.role === "admin" ? '/userdata' : '/dashboard');
                     }, 2000);
                 }
             } else if (resdata.status === 620) {

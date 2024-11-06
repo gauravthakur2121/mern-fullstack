@@ -11,7 +11,7 @@ function Mysidebar() {
 
   return (
     <>
-      {/* Hamburger Menu for Mobile */}
+    
       <div className="mobile-menu-icon" onClick={toggleSidebar}>
         <FaBars />
       </div>
@@ -27,10 +27,7 @@ function Mysidebar() {
             <FaChartLine />
             <span className="menu-text">Dashboard</span>
           </li>
-          <li>
-            <FaBox />
-           <Link to="/userdata"><span className="menu-text">Data</span></Link>
-          </li>
+         
           <li>
             <FaCog />
             <span className="menu-text">Settings</span>

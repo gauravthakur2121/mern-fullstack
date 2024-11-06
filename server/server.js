@@ -9,12 +9,12 @@ require('./database/connection');
 
 
 apps.use(cors({
-  origin: 'http://localhost:3002' ,  
+  origin: 'http://localhost:3000' ,  
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-apps.options('http://localhost:3002', cors());  
+apps.options('http://localhost:3000', cors());  
 
 apps.use((err, req, res, next) => {
   console.error(err.stack);
