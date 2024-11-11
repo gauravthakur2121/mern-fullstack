@@ -9,6 +9,7 @@ import Userlogindata from '../shares/Userlogindata';
 import { useNavigate } from 'react-router-dom';
 import { IoArrowBackCircle } from "react-icons/io5";
 import Charts from './Charts';
+import Footer from './Footer';
 
 function CustomTable() {
     const [user, setuser] = useState([]);
@@ -134,6 +135,7 @@ const totalName = [...new Set(user.map((d) => d.name))]
                 </table>
             </div>
             <Charts/>
+            <Footer/>
         </Fragment>
     );
 }

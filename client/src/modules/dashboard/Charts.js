@@ -15,6 +15,7 @@ import {
 } from "recharts";
 import { IoArrowBackCircle } from "react-icons/io5";
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 const Charts = () => {
   const [user, setUser] = useState([]);
@@ -159,6 +160,7 @@ const Charts = () => {
           </ResponsiveContainer>
         </div>
       </div>
+      <Footer/>
     </Fragment>
   );
 };
