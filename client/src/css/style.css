@@ -311,7 +311,6 @@
   font-size: 1.5em;
 }
 
-// userrecord
 .c-float
 {
   float:right !important;
@@ -492,14 +491,11 @@ select {
     height: 25px;
   }
 
-  /* Stack columns vertically on small devices */
   .row .col-md-6 {
     width: 100%;
     margin-bottom: 15px;
   }
 }
-
-/* Very Small Devices (Mobile Portrait) */
 @media (max-width: 420px) {
   h2 {
     font-size: 1.3rem;
