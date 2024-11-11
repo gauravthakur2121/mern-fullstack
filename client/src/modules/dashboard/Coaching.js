@@ -7,6 +7,7 @@ import Contact from './Contact';
 import Success from './Success';
 import Footer from './Footer';
 import Userlogindata from '../shares/Userlogindata';
+import Charts from './Charts';
 
 const Codesqude = () => {
   return (
@@ -18,6 +19,7 @@ const Codesqude = () => {
       <Carddata />
       <Contact />
       <Success />
+      <Charts/>
       <Footer />
       
     </div>

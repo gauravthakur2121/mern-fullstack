@@ -311,7 +311,32 @@
   font-size: 1.5em;
 }
 
-/* Mobile sidebar and menu icon */
+// userrecord
+.c-float
+{
+  float:right !important;
+}
+
+.animated-button {
+  background: linear-gradient(45deg, #FF5733, #FF8D33); 
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+}
+
+.animated-button:hover {
+  transform: scale(0.9); 
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); 
+  background: linear-gradient(45deg, #FF8D33, #FF5733); 
+}
+
+.animated-button:active {
+  transform: scale(0.80); 
+}
+
 .mobile-menu-icon {
   display: none;
   position: fixed;

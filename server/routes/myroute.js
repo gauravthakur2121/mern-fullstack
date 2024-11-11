@@ -1,4 +1,3 @@
-
 const express = require('express');
 const apps = express.Router();
 const myschimatype = require('../myschimatype/common');
@@ -88,6 +87,3 @@ apps.get("/singleuser/:id", async(req,res)=>{
 
 
 module.exports= apps;
-
-
-

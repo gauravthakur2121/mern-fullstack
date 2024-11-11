@@ -20,12 +20,14 @@ function Mysidebar() {
       <div className={`sidebar ${isMobileOpen ? 'mobile-open' : ''}`}>
         <ul>
           <li>
-            <FaHome />
-            <span className="menu-text">Home</span>
+            <FaHome /> 
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' , marginLeft:"8px"}}>Home</Link>
+      
+           
           </li>
           <li>
             <FaChartLine />
-            <span className="menu-text">Dashboard</span>
+            <Link to="/data" style={{ textDecoration: 'none', color: 'inherit' , marginLeft:"8px"}}>Data Visualization</Link>
           </li>
          
           <li>

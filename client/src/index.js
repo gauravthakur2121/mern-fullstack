@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
   // import { store } from './modules/Redux/Store';
 import CustomTable from './modules/dashboard/CustomTable';
 import Codesqude from './modules/dashboard/Coaching';
+import Charts from './modules/dashboard/Charts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -25,6 +26,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path='' element={<Myloginpage />} />
+        <Route path='/data' element={<Charts/>} />
         <Route path='userdata' element={<CustomTable/>} />
         <Route path='registor' element={<Myregistrpage />} /> 
         <Route path='userdata/details/:id' element={<Userdetailspage />} />

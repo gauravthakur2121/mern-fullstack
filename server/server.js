@@ -1,7 +1,7 @@
 'Access-Control-Allow-Origin'
+require('dotenv').config();
 const express = require("express");
 const apps = express();
-require('dotenv').config();
 const myroute = require('./routes/myroute');
 const cors = require('cors');
 const myport = process.env.PORT || 8700 
@@ -13,6 +13,7 @@ apps.use(cors({
   methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 apps.options('*', cors());  
 

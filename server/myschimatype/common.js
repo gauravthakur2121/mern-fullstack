@@ -41,7 +41,3 @@ role: {
 
 const myschimatype = new mongoose.model("mern11a",mynew);
 module.exports = myschimatype
-
-
-
-
